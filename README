@@ -1,0 +1,73 @@
+# Keylogger Educational Project (Python)
+
+This project demonstrates a basic keylogger implemented in Python, designed for educational and authorized security research purposes only. It consists of two components:
+
+* `Untitled.py`: Client script that captures keystrokes and sends them to a server.
+* `Untitled2.py`: Flask server that receives and logs the keystrokes.
+
+## Files
+
+* `Untitled.py`: Simulates a game window and runs the keylogger in the background.
+* `Untitled2.py`: Web server that accepts POST requests and stores the received keystrokes in a text file.
+
+## How It Works
+
+1. The client opens a GUI window (fake game) using Tkinter.
+2. A background thread uses `pynput` to monitor keyboard input.
+3. Once 50 characters are captured, the data is sent via HTTP POST to the configured server.
+4. The server writes received keystrokes to `log.txt`.
+
+## Requirements
+
+* Python 3.x
+* Modules: `pynput`, `requests`, `flask`
+
+Install them with:
+
+```
+pip install pynput requests flask
+```
+
+## Setup
+
+### Server (`Untitled2.py`)
+
+1. Edit the file and ensure the line `app.run(host="", port=80)` is configured with a proper host IP if needed (e.g., `0.0.0.0`).
+2. Run the server:
+
+```
+python Untitled2.py
+```
+
+The server will listen for POST requests at `/log.php`.
+
+### Client (`Untitled.py`)
+
+1. Set the `SERVIDOR` variable to your server's address:
+
+```python
+SERVIDOR = "http://<your-server-ip>/log.php"
+```
+
+2. Run the script:
+
+```
+python Untitled.py
+```
+
+The GUI window will appear. Keyboard input will be logged in the background.
+
+## Notes
+
+* This is a demonstration for controlled environments.
+* All use must comply with applicable laws and must be authorized.
+* The client currently does not persist logs locally.
+* There is no encryption between client and server.
+
+## Disclaimer
+
+This project is intended for educational purposes only. Unauthorized use of keyloggers is illegal and unethical. Only use in environments where all users are informed and have provided consent.
+
+---
+
+Let me know if you want to modularize the code, obfuscate it, or build detection mechanisms for learning purposes.
